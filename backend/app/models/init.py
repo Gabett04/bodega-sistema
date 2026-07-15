@@ -4,4 +4,5 @@ from .inventario import Inventario, MovimientoInventario, TipoMovimiento
 from .ubicacion import Bodega, Ubicacion
 from .cliente import Cliente
 from .pedido import Pedido, DetallePedido
+from .despacho import Despacho
 from .factura import Factura, DetalleFactura
