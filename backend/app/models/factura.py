@@ -6,15 +6,13 @@ from ..core.database import Base
 class Factura(Base):
     __tablename__ = "facturas"
     id = Column(Integer, primary_key=True, index=True)
-    numero_factura = Column(String(50), unique=True, nullable=False, index=True)
+    numero_factura = Column(String(50), unique=True, nullable=False)
     pedido_id = Column(Integer, ForeignKey("pedidos.id"), nullable=False)
     cliente_id = Column(Integer, ForeignKey("clientes.id"), nullable=False)
-    fecha_emision = Column(DateTime(timezone=True), server_default=func.now())
     subtotal = Column(Numeric(12, 2), default=0)
     igv = Column(Numeric(12, 2), default=0)
     total = Column(Numeric(12, 2), default=0)
     estado_pago = Column(String(20), default="pendiente")
-    metodo_pago = Column(String(50))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     detalles = relationship("DetalleFactura", back_populates="factura", cascade="all, delete-orphan")
 
